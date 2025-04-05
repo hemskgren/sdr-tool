@@ -2,6 +2,7 @@ import subprocess
 import json
 import sys
 from pprint import pprint
+from subprocess import CalledProcessError
 from threading import Thread
 import argparse
 
@@ -95,7 +96,12 @@ def main():
             print(sender)
 
         # Close the program 
-        sys.exit(0) 
+        sys.exit(0)
+    except CalledProcessError:
+        # Print the statement for exception
+        print("")
+        print(f"Is the server running on IP:{args.host} Port:{args.port}? Check the server and try again!")
+        print("")
 
 
 if __name__ == "__main__":
